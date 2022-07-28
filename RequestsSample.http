@@ -1,0 +1,30 @@
+@host=https://localhost:7025
+
+GET {{host}}/users
+Content-Type: application/json
+
+
+GET {{host}}/users/1
+Content-Type: application/json
+
+
+POST {{host}}/users
+Content-Type: application/json
+
+{
+	"name":"Hassan Mohamed",
+	"email":"hassanmohamed_hm@hotmail.com"
+}
+
+
+PUT {{host}}/users/1
+Content-Type: application/json
+
+{
+	"name":"Hassan Mohamed AbduElfattah",
+	"email":"hassanmohamed_hm@hotmail.com"
+}
+
+
+DELETE {{host}}/users/3
+Content-Type: application/json

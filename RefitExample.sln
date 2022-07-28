@@ -1,0 +1,41 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32721.290
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RefitExample", "RefitExample\RefitExample.csproj", "{41131395-6CE3-4076-BA75-4E91FC46F5F7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Example.Api", "Example.Api\Example.Api.csproj", "{B3B844C5-307E-4E0D-B3B2-1DEFA470A65D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Requests", "Requests", "{1B9281CE-C2B7-4800-82AF-EB1BC1B8F098}"
+	ProjectSection(SolutionItems) = preProject
+		RequestsSample.http = RequestsSample.http
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docs", "Docs", "{D9F742B0-DBA8-49D9-8E58-649FCE478704}"
+	ProjectSection(SolutionItems) = preProject
+		ReadMe.md = ReadMe.md
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{41131395-6CE3-4076-BA75-4E91FC46F5F7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{41131395-6CE3-4076-BA75-4E91FC46F5F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{41131395-6CE3-4076-BA75-4E91FC46F5F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{41131395-6CE3-4076-BA75-4E91FC46F5F7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B3B844C5-307E-4E0D-B3B2-1DEFA470A65D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B3B844C5-307E-4E0D-B3B2-1DEFA470A65D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B3B844C5-307E-4E0D-B3B2-1DEFA470A65D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B3B844C5-307E-4E0D-B3B2-1DEFA470A65D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {EF633872-A9AA-4849-BC60-32B87EF60C47}
+	EndGlobalSection
+EndGlobal
