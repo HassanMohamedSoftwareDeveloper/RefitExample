@@ -55,7 +55,7 @@ public interface IUsersClient
 > First, we can instantiate the client using the <code>RestService</code> class:
 
 ```C#
-var usersClient = RestService.For<IUsersClient>("https://myapi.com");
+var usersClient = RestService.For<IUsersClient>("https://localhost:7025");
 var users = await usersClient.GetUsers();
 ```
 
@@ -64,7 +64,7 @@ var users = await usersClient.GetUsers();
 ```C#
 services
     .AddRefitClient<IUsersClient>()
-    .ConfigureHttpClient(c => c.BaseAddress = new Uri("https://myapi.com"));
+    .ConfigureHttpClient(c => c.BaseAddress = new Uri("https://localhost:7025"));
 ```
 <code>Both of these are valid ways to register and use Refit clients.</code>
 > However, **if we want to make our code more maintainable and testable, registering the client with** <code> HttpClientFactory</code> **and injecting it into the required class constructors is the way to go**. This allows us to easily inject a mock of the interface for testing purposes, without having to rely on any of the implementation details of either <code>HttpClient</code> or the Refit library.
@@ -122,7 +122,7 @@ using IHost host = Host.CreateDefaultBuilder(args)
     {
         services
             .AddRefitClient<IUsersClient>()
-            .ConfigureHttpClient(c => c.BaseAddress = new Uri("https://jsonplaceholder.typicode.com/"));
+            .ConfigureHttpClient(c => c.BaseAddress = new Uri("https://localhost:7025/"));
     }).Build();
 ```
 > We use the <code>AddRefitClient()</code> extension method to register the <code>IUsersClient</code> interface, and then configure the <code>HttpClient</code>, setting the <code>BaseAddress</code> to the JSONPlaceholder address.
@@ -182,8 +182,8 @@ public interface IUsersClient
 ```C#
 var user = new User
 {
-    Name = "John Doe",
-    Email = "john.doe@test.com"
+    Name = "Hassan Mohamed",
+    Email = "HassanMohamed_hm@hotmail.com"
 };
 
 var usersClient = host.Services.GetRequiredService<IUsersClient>();
@@ -201,7 +201,7 @@ var existingUser = await usersClient.GetUser(1);
 > With this user, let’s update the <code>Email</code>:
 
 ```C#
-existingUser.Email = "john.doe@gmail.com";
+existingUser.Email = "Hassanmohamed_HM@hotmail.com";
 var updatedUser = await usersClient.UpdateUser(existingUser.Id, existingUser);
 
 Console.WriteLine($"User email updated to {updatedUser.Email}");
@@ -217,5 +217,7 @@ await usersClient.DeleteUser(userId);
 
 > This covers the basic CRUD functionality and shows how simply we can create an interface to interact with an API, without the need of handling complex HTTP logic with an <code>HttpClient</code>.
 
+## Source Code
+> 
 ## Conclusion
 In this article, we’ve learned how we can abstract interaction with HTTP-based APIs by using Refit and creating a simple interface for our API. This allowed us to avoid dealing with complex HTTP logic, such as creating request messages and deserializing responses and instead focus on the core logic relating to our applications.
