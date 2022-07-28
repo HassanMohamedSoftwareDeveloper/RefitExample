@@ -4,6 +4,7 @@ using Refit;
 using RefitExample;
 using RefitExample.Models;
 
+
 using IHost host = Host.CreateDefaultBuilder(args)
     .ConfigureServices((_, services) =>
     {
@@ -13,6 +14,7 @@ using IHost host = Host.CreateDefaultBuilder(args)
     }).Build();
 
 var usersClient = host.Services.GetRequiredService<IUsersClient>();
+
 
 #region Get All :
 Console.WriteLine("------------------All Users-----------------");
@@ -56,5 +58,24 @@ Console.WriteLine("------------------Delete User-----------------");
 var userIdToDelete = (await usersClient.CreateUser(user)).Id;
 await usersClient.DeleteUser(userIdToDelete);
 Console.WriteLine($"User with Id: {userIdToDelete} deleted");
+#endregion
+
+
+
+#region Another Implementation with Headers Like Authorization :
+Console.WriteLine();
+Console.WriteLine();
+Console.WriteLine();
+Console.WriteLine("Another Implementation with Headers Like Authorization");
+var authHeaderToken = "token value";
+var userClientWithHeaders = RestService.For<IUsersClientWithHeaders>("https://localhost:7025/", new RefitSettings()
+{
+    AuthorizationHeaderValueGetter = () => Task.FromResult(authHeaderToken)
+});
+var usersList = await userClientWithHeaders.GetAll();
+foreach (var item in usersList)
+{
+    Console.WriteLine(item);
+}
 #endregion
 

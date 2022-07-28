@@ -217,6 +217,36 @@ await usersClient.DeleteUser(userId);
 
 > This covers the basic CRUD functionality and shows how simply we can create an interface to interact with an API, without the need of handling complex HTTP logic with an <code>HttpClient</code>.
 
+
+# Another Implementation with Headers Like Authorization 
+## Extending IUsersClientWithHeaders
+```C#
+[Headers("Authorization: Bearer")]
+public interface IUsersClientWithHeaders
+{
+    [Get("/users")]
+    Task<IEnumerable<User>> GetAll();
+}
+```
+> In Program 
+```C#
+#region Another Implementation with Headers Like Authorization :
+Console.WriteLine();
+Console.WriteLine();
+Console.WriteLine();
+Console.WriteLine("Another Implementation with Headers Like Authorization");
+var authHeaderToken = "token value";
+var userClientWithHeaders = RestService.For<IUsersClientWithHeaders>("https://localhost:7025/", new RefitSettings()
+{
+    AuthorizationHeaderValueGetter = () => Task.FromResult(authHeaderToken)
+});
+var usersList = await userClientWithHeaders.GetAll();
+foreach (var item in usersList)
+{
+    Console.WriteLine(item);
+}
+#endregion
+```
 ## Source Code
 > To download source code  [Click here ](https://github.com/HassanMohamedSoftwareDeveloper/RefitExample).
 ## Conclusion
